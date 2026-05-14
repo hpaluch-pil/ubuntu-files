@@ -10,6 +10,8 @@ https://github.com/hpaluch/debian-files
 
 List of scripts:
 
+* [01-debloat-ubuntu.sh](01-debloat-ubuntu.sh) - debloating Ubuntu - warning!
+  potentially dangerous...
 * [02-use-eth0.sh](02-use-eth0.sh) - renames (un)predictable network interfaces
   to good old `ethX`. WARNING! So far tested with single interface only!  **This
   script should be run by experienced users only!** It may kill
