@@ -53,8 +53,6 @@ ndevs=${#devs[@]}
 [[ $ndevs =~ ^[0-9]+$ ]] || errx "Got invalid number of network devices '$ndevs'"
 echo "INFO: Found ${#devs[@]} active device(s): '${devs[@]}'"
 [ $ndevs -gt 0 ] || errx "No active network device found"
-# devices surrounded by spaces (for word search)
-sp_devs=" ${devs[@]} "
 # expected target devices
 declare -a tdevs
 n=0
