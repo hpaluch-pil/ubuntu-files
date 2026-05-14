@@ -21,6 +21,7 @@ confirm_overwrite (){
 	# OK overwrite (cp is safer in case of abort)
 	# no backup - issues: sudo cp -v "$dst" "$dst.orig"
 	sudo cp -v "$src" "$dst"
+	[ ! "$dst" = /etc/systemd/resolved.conf ] || sudo systemctl restart systemd-resolved
 }
 
 tmp=`mktemp`
@@ -32,6 +33,11 @@ for f in `grep -l '^session.* pam_motd\.so' /etc/pam.d/*`; do
 	sed '/^session.* pam_motd\.so/s/^/#/' $f > $tmp
 	diff -u $f $tmp || confirm_overwrite $tmp $f
 done
+
+# Disable useless systemd-resolved
+f=/etc/systemd/resolved.conf
+sed 's/^\(#\?\)\(LLMNR\|DNSStubListener\)=.*/\2=no/' $f > $tmp
+diff -u $f $tmp || confirm_overwrite $tmp $f
 
 set -x
 # remove bloated packages:
