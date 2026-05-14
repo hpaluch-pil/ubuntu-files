@@ -22,3 +22,5 @@ List of scripts:
   to be thick (default is extremely skinny)
 * [15-install-cli-pkgs.sh](15-install-cli-pkgs.sh) installs my favorite CLI
   packages
+* [20-vm-packages.sh](20-vm-packages.sh) manage VM Guest packages (install needed,
+  remove not needed)
